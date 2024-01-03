@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "generate": "drizzle-kit generate:sqlite --schema=./src/schema.ts --out=./migrations"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.29.3",
+    "hono": "^3.11.12"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "drizzle-kit": "^0.20.9",
+    "wrangler": "^3.22.0"
+  }
+}

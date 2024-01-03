@@ -17,9 +17,12 @@ const Trigger = ({ tool }: { tool: (typeof TOOLS)[number] }) => (
 
 const Description = ({ tool }: { tool: (typeof TOOLS)[number] }) => (
   <>
-    <span className="text-md scroll-m-20 font-semibold tracking-tight">
-      {tool.name}
-    </span>
+    <div className="flex gap-2 items-center">
+      <tool.Icon className="w-5 h-5" />
+      <span className="text-md scroll-m-20 font-semibold tracking-tight">
+        {tool.name}
+      </span>
+    </div>
     <span className="text-sm leading-6 [&:not(:first-child)]:mt-3">
       {tool.description}
     </span>

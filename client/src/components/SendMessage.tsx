@@ -12,6 +12,7 @@ import useSWRMutation from "swr/mutation";
 import { addMessageFetcher } from "@/lib/fetchers";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Icons } from "./Icons";
 
 const FormSchema = z.object({
   message: z.string().min(1, {
@@ -26,7 +27,7 @@ const SendMessage = () => {
     resolver: zodResolver(FormSchema),
   });
 
-  const { trigger } = useSWRMutation(
+  const { trigger, isMutating } = useSWRMutation(
     process.env.NODE_ENV === "production"
       ? process.env.NEXT_PUBLIC_API_URL_PROD
       : process.env.NEXT_PUBLIC_API_URL_DEV,
@@ -87,6 +88,8 @@ const SendMessage = () => {
                 Send
                 <SendHorizontalIcon />
               </>
+            ) : isMutating ? (
+              <Icons.Loader className="w-7 h-7" />
             ) : (
               <>Spam proof too hehe</>
             )}
